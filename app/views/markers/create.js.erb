@@ -1,6 +1,22 @@
-var div_markers = document.getElementById("marker")
-div_markers.innerHTML = `
-    <div>
-        <%= @marker.url %>
-    </div>
-`
+<% if @marker %>
+    var div_markers = document.getElementById("marker");
+    div_markers.innerHTML += `
+        <div>
+            <%= @marker.url %>
+        </div>
+    `;
+<% elsif @category %>
+    var div_categories = document.getElementById("category");
+    div_categories.innerHTML += `
+        <div>
+            <%= @category.name %>
+        </div>
+    `;
+<% elsif @type %>
+    var div_types = document.getElementById("type");
+    div_types.innerHTML += `
+        <div>
+            <%= @type.name %>
+        </div>
+    `;
+<% end %>

@@ -1,14 +1,44 @@
-<div>
-    <%= form_with(url: m_c_path, model: @marker, remote: true) do |f| %>
-        <%= f.text_field :url, placeholder: 'ingrese la url' %>
-        <%= f.submit 'guardar' %>
-    <% end %>
+<div style="display:flex; justify-content: space-around">
+    <div>
+        <%= form_with(url: m_c_path, model: @marker, remote: true, data: {confirm: 'seguro que esta bien escito?'}) do |m| %>
+            <%= m.text_field :url, placeholder: 'ingrese la url' %>
+            <%= m.submit 'guardar pagina' %>
+        <% end %>
+    </div>
+    <div>
+        <%= form_with(url: m_c_path, model: @category, remote:true) do |c| %>
+            <%= c.text_field :name, placeholder: 'nombre de la categoria' %>
+            <%= c.submit 'crear categoria' %>
+        <% end %>
+    </div>
+    <div>
+        <%= form_with(url: m_c_path, model: @type, remote:true) do |t| %>
+            <%= t.text_field :name, placeholder: 'nombre del tipo' %>
+            <%= t.submit 'crear tipo' %>
+        <% end %>
+    </div>
 </div>
 
-<div id="marker">
-    <% @markers.each do |marker| %>
-        <div>
-            <%= marker.url %>
-        </div>
-    <% end %>
+<div style="display:flex; justify-content: space-around">
+    <div id="marker">
+        <% @markers.each do |marker| %>
+            <div>
+                <%= marker.url %>
+            </div>
+        <% end %>
+    </div>
+    <div id="category">
+        <% @categories.each do |category| %>
+            <div>
+                <%= category.name%>
+            </div>
+        <% end %>
+    </div>
+    <div id="type">
+        <% @types.each do |type| %>
+            <div>
+                <%= type.name%>
+            </div>
+        <% end %>
+    </div>
 </div>
