@@ -12,11 +12,20 @@
             <%= @category.name %>
         </div>
     `;
-<% elsif @type %>
-    var div_types = document.getElementById("type");
-    div_types.innerHTML += `
+<% elsif @marker_category %>
+    var marker_category = document.getElementById("marker_category");
+    marker_category.innerHTML += `
         <div>
-            <%= @type.name %>
+            url: <%= @marker_category.marker.url %>
         </div>
-    `;
+        <div>
+            categoria: <%= @marker_category.category.name %>
+        </div>
+        <div>
+            tipo: <%= @marker_category.type_relation %>
+        </div>
+        <br>
+        <br>
+    `
+
 <% end %>

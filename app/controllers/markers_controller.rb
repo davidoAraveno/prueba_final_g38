@@ -1,11 +1,12 @@
 class MarkersController < ApplicationController
   def index
+    @marker_category = MarkerCategory.new
     @category = Category.new
     @marker = Marker.new
-    @type = Type.new
     @markers = Marker.all
     @categories = Category.all
-    @types = Type.all
+    @marker_categories = MarkerCategory.all
+
   end
 
   def create
@@ -21,13 +22,18 @@ class MarkersController < ApplicationController
       respond_to do |format|
         format.js {  }
       end
-    elsif params[:type]
-      @type = Type.new(type_params)
-      @type.save
+    elsif params[:marker_category]
+      @marker_category = MarkerCategory.new(marker_category_params)
+      @marker_category.save
       respond_to do |format|
         format.js {  }
       end
     end
+  end
+
+  def categories_endpoint
+    @categories = Category.all
+    render json: @categories.to_json
   end
 
   private
@@ -40,9 +46,8 @@ class MarkersController < ApplicationController
     params.require(:category).permit(:name)
   end
 
-  def type_params
-    params.require(:type).permit(:name)
+  def marker_category_params
+    params.require(:marker_category).permit(:marker_id, :category_id, :type_relation)
   end
-
 
 end
