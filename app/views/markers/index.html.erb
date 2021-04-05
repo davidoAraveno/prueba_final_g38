@@ -1,0 +1,14 @@
+<div>
+    <%= form_with(url: m_c_path, model: @marker, remote: true) do |f| %>
+        <%= f.text_field :url, placeholder: 'ingrese la url' %>
+        <%= f.submit 'guardar' %>
+    <% end %>
+</div>
+
+<div id="marker">
+    <% @markers.each do |marker| %>
+        <div>
+            <%= marker.url %>
+        </div>
+    <% end %>
+</div>
