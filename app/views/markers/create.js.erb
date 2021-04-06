@@ -24,6 +24,10 @@
         <div>
             tipo: <%= @marker_category.type_relation %>
         </div>
+        <div>
+            <%= link_to 'borrar', m_d_path(@marker_category.id), method: :delete, data: {confirm: 'seguro que lo quieres borrar?'} %>
+            <%= link_to 'editar', m_s_path(@marker_category.id)%>
+        </div>
         <br>
         <br>
     `

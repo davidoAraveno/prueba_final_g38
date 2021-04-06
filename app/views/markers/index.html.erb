@@ -31,6 +31,7 @@
 </div>
 
 <div>
+    <h2> Asigna una categoria y un tipo a una url </h2>
     <%= form_with(url: m_c_path, model:@marker_category, remote: true) do |mc| %>
         <%= mc.select :marker_id, options_from_collection_for_select(@markers, :id, :url)%>
         <%= mc.select :category_id, options_from_collection_for_select(@categories, :id, :name)%>
@@ -49,6 +50,10 @@
         </div>
         <div>
             tipo: <%= markcategory.type_relation %>
+        </div>
+        <div>
+            <%= link_to 'borrar', m_d_path(markcategory.id), method: :delete, data: {confirm: 'seguro que lo quieres borrar?'} %>
+            <%= link_to 'editar', m_s_path(markcategory.id)%>
         </div>
         <br>
         <br>

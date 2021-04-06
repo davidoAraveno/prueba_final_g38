@@ -1,0 +1,17 @@
+<%= form_with(url: m_u_path(@marker_categories.marker.id),model: @marker, local:true, method: :patch) do |f| %>
+    <%= f.text_field :url, value: @marker_categories.marker.url%>
+    <%= f.submit 'editar' %>
+<% end %>
+
+<br>
+
+<%= form_with(url: m_u_path(@marker_categories.category.id),model: @category, local:true, method: :patch) do |f| %>
+    <%= f.text_field :name, value: @marker_categories.category.name %>
+    <%= f.submit 'editar' %>
+<% end %>
+<br>
+<%= form_with(url: m_u_path(@marker_categories.id),model: @marker_category, local:true, method: :patch) do |f| %>
+    <%= f.text_field :type_relation, value: @marker_categories.type_relation %>
+    <%= f.submit 'editar' %>
+<% end %>
+<%= link_to 'volver al index', root_path %>
